@@ -7,6 +7,7 @@ package com.company;
 // Child Class / Sub Class -> The class which inherits the properties.
 class A {
     int prop1; String prop2;
+    public A() { }
     public A(int prop1, String prop2) {
         this.prop1 = prop1;
         this.prop2 = prop2;
@@ -15,22 +16,20 @@ class A {
         System.out.println("Property One -> " + this.prop1 + " | Property Two -> " + this.prop2);
     }
 }
-class B extends A {
+class B {
     double prop3; boolean prop4;
-    public B(int prop1, String prop2, double prop3, boolean prop4) {
-        // call the parent constructor and pass prop1 & prop2 to class A
-        super(prop1, prop2);
+    public B(double prop3, boolean prop4) {
         this.prop3 = prop3;
         this.prop4 = prop4;
     }
     public void display() {
-        System.out.println("Property One -> " + this.prop1 + " | Property Two -> " + this.prop2 + " | Property Three -> " + this.prop3 + " | Property Four -> " + this.prop4);
+        System.out.println("Property Three -> " + this.prop3 + " | Property Four -> " + this.prop4);
     }
 }
-
+// NOTE:- In Java, multiple Inheritance is NOT supported! You cannot inherit two, or more than two classes in another class.
+// Research Work :- Deadly Diamond of Death (D.D.D.)
+// class C extends A, B {  }
 public class InheritanceExample {
     public static void main(String[] args) {
-        B objectB = new B(100, "Hello", 3.14, false);
-        objectB.display();
     }
 }
