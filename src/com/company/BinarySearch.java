@@ -1,9 +1,12 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BinarySearch {
     public static int binarySearch(int n, int[] arr, int k) {
+        // if the data is not sorted --> Arrays.sort(arr)
+        Arrays.sort(arr);
         int start = 0; int end = n-1;
         while(start <= end) {
             int mid = (start + end) / 2;
