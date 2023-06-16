@@ -22,6 +22,7 @@ public class Array {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();                // 5
         int[] array = new int[size];
+        System.out.println("The value of the array is - " + array);             // Reference Variable (Address)
         // taking the array input
         for(int i=0; i < size; i++)             // i = 0, 1, 2, 3, 4
             // array[0] = sc.nextInt(), array[1] = sc.nextInt()

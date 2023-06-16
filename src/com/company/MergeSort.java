@@ -46,10 +46,10 @@ public class MergeSort {
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        int n = sc.nextInt();                   // cin >> n
         int[] arr = new int[n];
         for(int i=0; i < n; i++)
-            arr[i] = sc.nextInt();
+            arr[i] = sc.nextInt();              // 5 4 6 2 1 3
         // print the array before sorting
         printArray(arr);
         // sort the array using merge sort
