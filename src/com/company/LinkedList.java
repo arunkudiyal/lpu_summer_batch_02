@@ -75,6 +75,12 @@ public class LinkedList {
         }
         System.out.println();
     }
+    // Utility function to print the values of the LL in reverse order
+    public void printReverse(Node head) {
+        if(head == null) return;
+        printReverse(head.next);
+        System.out.print(head.data + " ");
+    }
     public static void main(String[] args) {
         // When the LL will be created for the first time, the head will not be pointing towards any node.
         LinkedList list = new LinkedList();                 // head = null
@@ -92,5 +98,6 @@ public class LinkedList {
         list.display();                                     // 10 100 200 300 50 400
         list.deleteFromStart();
         list.display();                                     // 100 200 300 50 400
+        list.printReverse(list.head);                       // 400 50 300 200 100
     }
 }

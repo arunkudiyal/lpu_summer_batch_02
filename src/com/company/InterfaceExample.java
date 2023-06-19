@@ -27,8 +27,8 @@ interface Demo {
 //}
 
 // Implement Multiple Inheritance using Interfaces
-public class InterfaceExample extends AA implements Demo {
-    public static void main(String[] args) {
-
-    }
-}
+//public class InterfaceExample extends AA implements Test {
+//    public static void main(String[] args) {
+//
+//    }
+//}
