@@ -17,6 +17,11 @@ public class BinarySearchTree {
     public void insert(int data) {
         root = insertData(root, data);
     }
+    public boolean search(int key) {
+        Node address = searchKey(root, key);        // address -> # | null
+        if(address == null) return false;
+        else return true;
+    }
     public void inOrder() {
         inOrderTraversal(root);
         System.out.println();
@@ -38,6 +43,11 @@ public class BinarySearchTree {
         else if(root.data > data) root.left = insertData(root.left, data);
         else if(root.data < data) root.right = insertData(root.right, data);
         return root;
+    }
+    private Node searchKey(Node root, int key) {
+        if(root == null || root.data == key) return root;
+        else if(key < root.data) return searchKey(root.left, key);
+        else return searchKey(root.right, key);
     }
     private void inOrderTraversal(Node root) {
         if(root != null) {
@@ -86,5 +96,7 @@ public class BinarySearchTree {
         bst.postOrder();                                                                // 1 21 43 23 12 6 90 78 45
         // NOTE :- In case of decreasing order, change the inOrder from LDR to DLR
         bst.reverseOrder();                                                             // 90 78 45 43 23 21 12 6 1
+        System.out.println(bst.search(78));                                         // true
+        System.out.println(bst.search(100));                                       // false
     }
 }
