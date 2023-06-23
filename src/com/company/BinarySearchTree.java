@@ -17,6 +17,9 @@ public class BinarySearchTree {
     public void insert(int data) {
         root = insertData(root, data);
     }
+    public void delete(int key) {
+        root = deleteKey(root, key);
+    }
     public boolean search(int key) {
         Node address = searchKey(root, key);        // address -> # | null
         if(address == null) return false;
@@ -42,6 +45,47 @@ public class BinarySearchTree {
         if(root == null) root = new Node(data);
         else if(root.data > data) root.left = insertData(root.left, data);
         else if(root.data < data) root.right = insertData(root.right, data);
+        return root;
+    }
+    private int minValue(Node root) {
+        int minValue = root.data;
+        while(root.left != null) {
+            minValue = root.left.data;
+            root = root.left;
+        }
+        return minValue;
+    }
+    private int maxValue(Node root) {
+        int maxValue = root.data;
+        while(root.right != null) {
+            maxValue = root.right.data;
+            root = root.right;
+        }
+        return  maxValue;
+    }
+    private Node deleteKey(Node root, int key) {
+        // Search for the element if that exists in the BST or not
+        if(root == null) return null;
+        else {
+            if(key < root.data) root.left = deleteKey(root.left, key);
+            else if(key > root.data) root.right = deleteKey(root.right, key);
+            // key == root.data
+            else {
+                // Case_1 - if(root.left == null && root.right == null) | leaf node
+                // Case_2 - if(root.left == null || root.right == null) | Node w one child.
+                if(root.left == null) return root.right;
+                else if(root.right == null) return root.left;
+                // Case_3 - if(root.left != null && root.right != null) | Node w two children
+                else {
+                    // Way 1 -> Replace with the smallest element from the right subtree
+                    root.data = minValue(root.right);
+                    root.right = deleteKey(root.right, root.data);
+                    // Way 2 -> Replace with the largest element from the left subtree
+                    // root.data = maxValue(root.left);
+                    // root.left = deleteKey(root.left, root.data);
+                }
+            }
+        }
         return root;
     }
     private Node searchKey(Node root, int key) {
@@ -98,5 +142,7 @@ public class BinarySearchTree {
         bst.reverseOrder();                                                             // 90 78 45 43 23 21 12 6 1
         System.out.println(bst.search(78));                                         // true
         System.out.println(bst.search(100));                                       // false
+        bst.delete(43);
+        bst.inOrder();                                                                  // 1 6 12 21 23 45 78 90
     }
 }
