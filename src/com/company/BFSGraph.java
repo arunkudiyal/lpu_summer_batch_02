@@ -10,7 +10,7 @@ public class BFSGraph {
         this.V = V;
         graph = new int[V][V];
     }
-    public void bfs(int start) {
+    public void BFS(int start) {
         boolean[] visited = new boolean[V];
         // initially when there is no exploration
         for(int i=0; i < V; i++) visited[i] = false;
@@ -40,6 +40,6 @@ public class BFSGraph {
                 g.graph[i][j] = sc.nextInt();
             }
         }
-        g.bfs(0);
+        g.BFS(0);
     }
 }
