@@ -28,12 +28,44 @@ public class PrimsAlgorithm {
             visited[u] = true;
             for(int v=0; v < V; v++) {  // u = 0; v = 0 1 2 3 4 5 6 7 8
                 // with an edge && should not be visited && min cost
-                if(graph[u][v] != 0 && !visited[v] && graph[u][v] < cost[v]) {
+                if(graph[u][v] != 0 && !visited[v] && graph[u][v] <= cost[v]) {
                     cost[v] = graph[u][v];
                 }
             }
         }
+        // Print the value of cost array
+        int total_cost = 0;
+        for(int i=0; i < V; i++)
+            total_cost += cost[i];
+        System.out.println(total_cost);
+        System.out.println("---- x -----");
+        for(int i=0; i < V; i++)
+            System.out.print(cost[i] + " ");
+        System.out.println();
     }
+    // 8 7 9 2 1 8 2
+    public int minVertex(boolean[] visited, int[] cost) {
+        int min_vertex = -1; int min = Integer.MAX_VALUE;
+        for(int i=0; i < V; i++) {
+            if(cost[i] <= min && !visited[i]) {
+                min = cost[i];
+                min_vertex = i;
+            }
+        }
+        return min_vertex;
+    }
+/*
+9
+0 4 0 0 0 0 0 8 0
+4 0 8 0 0 0 0 11 0
+0 8 0 7 0 4 0 0 2
+0 0 7 0 9 14 0 0 0
+0 0 0 9 0 10 0 0 0
+0 0 4 14 10 0 2 0 0
+0 0 0 0 0 2 0 1 6
+8 11 0 0 0 0 1 0 7
+0 0 2 0 0 0 1 7 0
+*/
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int V = sc.nextInt();
