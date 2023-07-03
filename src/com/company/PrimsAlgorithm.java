@@ -19,6 +19,7 @@ public class PrimsAlgorithm {
             cost[i] = Integer.MAX_VALUE;
         }
         // Step3 -> select a start point for the traversal
+        // cost[source] = graph[source][source]
         cost[0] = graph[0][0];
         parent[0] = -1;
         // Step4 -> total number of edges required (V-1)
@@ -41,13 +42,13 @@ public class PrimsAlgorithm {
         //        for(int i=0; i < V; i++)
         //            total_cost += cost[i];
         //        System.out.println(total_cost);
-        //        System.out.println("---- x -----");
-        //        for(int i=0; i < V; i++)
-        //            System.out.print(cost[i] + " ");
-        //        System.out.println();
+                System.out.println("---- x -----");
+                for(int i=0; i < V; i++)
+                    System.out.print(cost[i] + " ");
+                System.out.println();
 
         // Create a display() function such that I print the cost of each edge with a source 'S' and a destination 'D'
-        display(parent, this.graph);
+        // display(parent, this.graph);
     }
     public void display(int[] parent, int[][] graph) {
         System.out.println("S_To_D\tCost");
