@@ -47,9 +47,8 @@ public class DijkstraAlgorithm {
             }
         }
         int source = sc.nextInt();
+        int destination = sc.nextInt();
         int[] minCostPath = algo.dijkstraAlgorithm(algo.graph, source);
-        for(int i=0; i < minCostPath.length; i++)
-            System.out.print(minCostPath[i] + " ");
-        System.out.println();
+        System.out.println(minCostPath[destination]);
     }
 }
